@@ -51,7 +51,7 @@ class TypeWriter {
             this.txt = fullTxt.substring(0, this.txt.length + 1);
         }
 
-        this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
+        this.txtElement.textContent = this.txt;
 
         let typeSpeed = 150;
         if (this.isDeleting) {
@@ -89,7 +89,7 @@ const timelineObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('show');
-            // observer.unobserve(entry.target); // Uncomment if you want animation only once
+            observer.unobserve(entry.target);
         }
     });
 }, {
@@ -102,3 +102,10 @@ timelineItems.forEach(item => {
 });
 
 
+
+
+// --- Footer year ---
+const currentYear = document.getElementById('current-year');
+if (currentYear) {
+    currentYear.textContent = new Date().getFullYear();
+}
